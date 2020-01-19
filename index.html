@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Title</title>
-    <link rel="canonical" href="https://{guthub_username}.github.io/{repository}/" />
-    <style type="text/css">
-    /* --- application CSS here --- */
-    *{
-      background-color: #F5F4F0;
-      font-family: Georgia, serif;
-    }
-    </style>
-</head>
-<body>
-  <h1>Content</h1>
-  <script>
-  // register ServiceWorker, remember to use absolute path!
-  if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('/{repository}/sw.js', {scope: '/{repository}/'})
-  }
-  
-  // --- Application code here ---
-  </script>
-</body>
+  <head>
+    <title>Service Worker</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Service Worker</h1>
+    <p>Some static content</p>
+    <p>And now, a picture to be loaded:</p>
+    <img src="https://mrcooper.azureedge.net/assets/ilo-mrc-e40e75b10a1a63794ff0768c5575df29b74868d90d23b30b79eddb257e33e499.png" alt="Oh oh">
+    <p>And now, some content added via JavaScript:</p>
+    <script src="script.js"></script>
+    <script>
+      // Let's register our serviceworker
+      navigator.serviceWorker.register('sw.js', {
+        // The scope cannot be parent to the script url
+        scope: './'
+      });
+    </script>
+    <script src="logging.js"></script>
+  </body>
 </html>
